@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de notas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm">
+        <h1 class="text-2xl font-bold text-center mb-4">Calculadora de notas</h1>
+        <div class="space-y-3">
+            <label class="block">Trabajo (20%)</label>
+            <input type="number" id="trabajo" class="w-full p-2 border rounded" step="0.01" placeholder="Ingrese nota">
+            
+            <label class="block">Mapas (15%)</label>
+            <input type="number" id="mapas" class="w-full p-2 border rounded" step="0.01" placeholder="Ingrese nota">
+            
+            <label class="block">Investigación (15%)</label>
+            <input type="number" id="investigacion" class="w-full p-2 border rounded" step="0.01" placeholder="Ingrese nota">
+            
+            <label class="block">Primer examen (25%)</label>
+            <input type="number" id="primer_examen" class="w-full p-2 border rounded" step="0.01" placeholder="Ingrese nota">
+            
+            <label class="block">Segundo examen (25%)</label>
+            <input type="number" id="segundo_examen" class="w-full p-2 border rounded" step="0.01" placeholder="Ingrese nota">
+            
+            <button onclick="calcularNota()" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 mt-4">Calcular</button>
+            
+            <div class="text-center text-lg font-semibold mt-4">
+                Nota final: <span id="resultado">--</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function calcularNota() {
+            let trabajo = parseFloat(document.getElementById('trabajo').value) || 0;
+            let mapas = parseFloat(document.getElementById('mapas').value) || 0;
+            let investigacion = parseFloat(document.getElementById('investigacion').value) || 0;
+            let primer_examen = parseFloat(document.getElementById('primer_examen').value) || 0;
+            let segundo_examen = parseFloat(document.getElementById('segundo_examen').value) || 0;
+            
+            let notaFinal = (trabajo * 0.2) + (mapas * 0.15) + (investigacion * 0.15) + 
+                            (primer_examen * 0.25) + (segundo_examen * 0.25);
+            
+            document.getElementById('resultado').textContent = notaFinal.toFixed(2);
+        }
+    </script>
+</body>
+</html>
