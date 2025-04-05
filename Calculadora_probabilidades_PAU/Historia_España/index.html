@@ -52,11 +52,11 @@
   <label>Bloque 3. ¿Cuántos temas has estudiado?</label>
   <input type="number" id="tema3" min="0" max="9">
 
-  <label>Fuente. ¿Cuántos temas has estudiado?</label>
-  <input type="number" id="fuente" min="0" max="30">
+  <label>Siglo XIX (Bloques 4-7). ¿Cuántos temas has estudiado?</label>
+  <input type="number" id="siglo19" min="0" max="11">
 
-  <label>Pregunta larga. ¿Cuántos temas has estudiado?</label>
-  <input type="number" id="larga" min="0" max="30">
+  <label>Siglos XX y XXI (Bloques 8-15). ¿Cuántos temas has estudiado?</label>
+  <input type="number" id="siglo20" min="0" max="19">
 
   <button onclick="calcularProbabilidades()">Calcular probabilidades</button>
 
@@ -81,22 +81,22 @@
       const tema1 = parseInt(document.getElementById("tema1").value) || 0;
       const tema2 = parseInt(document.getElementById("tema2").value) || 0;
       const tema3 = parseInt(document.getElementById("tema3").value) || 0;
-      const fuente = parseInt(document.getElementById("fuente").value) || 0;
-      const larga = parseInt(document.getElementById("larga").value) || 0;
+      const siglo19 = parseInt(document.getElementById("siglo19").value) || 0;
+      const siglo20 = parseInt(document.getElementById("siglo20").value) || 0;
 
       const p1 = calcularProbabilidad(tema1, 4);
       const p2 = calcularProbabilidad(tema2, 5);
       const p3 = calcularProbabilidad(tema3, 9);
-      const pf = calcularProbabilidad(fuente, 30);
-      const pl = calcularProbabilidad(larga, 30);
+      const p19 = calcularProbabilidad(siglo19, 11);
+      const p20 = calcularProbabilidad(siglo20, 19);
 
-      const probTotal = Math.min(p1 * p2 * p3 * pf * pl * 100, 100).toFixed(2);
+      const probTotal = Math.min(p1 * p2 * p3 * p19 * p20 * 100, 100).toFixed(2);
 
       const p1str = (p1 * 100).toFixed(2);
       const p2str = (p2 * 100).toFixed(2);
       const p3str = (p3 * 100).toFixed(2);
-      const pfstr = (pf * 100).toFixed(2);
-      const plstr = (pl * 100).toFixed(2);
+      const p19str = (p19 * 100).toFixed(2);
+      const p20str = (p20 * 100).toFixed(2);
 
       const emojiTotal = emojiProb(probTotal);
 
@@ -105,8 +105,8 @@
         Bloque 1: ${p1str}% de que pregunten lo que has estudiado${emojiProb(p1str)}<br>
         Bloque 2: ${p2str}% de que pregunten lo que has estudiado${emojiProb(p2str)}<br>
         Bloque 3: ${p3str}% de que pregunten lo que has estudiado${emojiProb(p3str)}<br>
-        Fuente: ${pfstr}% de que pregunten lo que has estudiado${emojiProb(pfstr)}<br>
-        Pregunta larga: ${plstr}% de que pregunten lo que has estudiado${emojiProb(plstr)}<br>
+        Siglo XIX: ${p19str}% de que pregunten lo que has estudiado${emojiProb(p19str)}<br>
+        Siglos XX y XXI: ${p20str}% de que pregunten lo que has estudiado${emojiProb(p20str)}<br>
         <br><strong>Probabilidad de que pregunten TODO lo que has estudiado:</strong> ${probTotal}%${emojiTotal}<br><br>
         <em>Fortuna audaces iuvat</em>
       `;
